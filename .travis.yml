@@ -3,6 +3,10 @@ language: ruby
 before_script:
   - bundle install
 
-script:
-  - bundle exec rspec
+jobs:
+  include:
+    - name: check
+      script: gem install rubocop && rubocop
+    - name: test
+      script: bundle exec rspec
 
