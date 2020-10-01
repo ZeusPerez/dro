@@ -4,10 +4,9 @@ before_script:
   - bundle install
 
 jobs:
-  allow_failures:
+  include:
     - name: check
       script: gem install rubocop && rubocop
-  include:
     - name: test
       script: bundle exec rspec
 
