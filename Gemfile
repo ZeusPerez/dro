@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rspec'
-gem 'flog'
 gem 'byebug'
-gem 'pry'
+gem 'flog'
 gem 'money'
+gem 'pry-byebug'
+gem 'rspec'
