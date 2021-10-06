@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Property
   attr_accessor :name, :type, :default
 
@@ -7,7 +9,7 @@ class Property
     @default = default
   end
 
-  FALSE_VALUES = [false, 0, '0', 'f', 'F', 'false', 'FALSE', 'off', 'OFF'].freeze
+  FALSE_VALUES = [false, 0, '0', 'f', 'F', 'false', 'FALSE', 'off', 'OFF', nil].freeze
 
   TYPECASTS = {
     integer: ->(value) { value.to_i },
@@ -18,6 +20,7 @@ class Property
     array: ->(value) { Array(value) },
     hash: ->(value) { Hash(value) },
     time: ->(value) { Time.parse(value) },
+    proc: ->(value) { value.to_proc },
     any: ->(value) { value }
   }.freeze
 
@@ -39,6 +42,7 @@ class Property
 
   def cast_by_lambda_def(value)
     typecast = TYPECASTS.fetch(type, type)
+
     typecast.call(value)
   end
 end

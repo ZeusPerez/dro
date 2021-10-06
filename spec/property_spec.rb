@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Property do
@@ -23,7 +25,7 @@ RSpec.describe Property do
     end
 
     it 'cast a Proc' do
-      type = proc { |value| 'Hey! I am a ' + value.to_s }
+      type = proc { |value| "Hey! I am a #{value}" }
       property = described_class.new('proc_property', type, 'default_string')
       expect(property.cast('test proc')).to eq('Hey! I am a test proc')
     end
@@ -39,7 +41,7 @@ RSpec.describe Property do
 
     it 'cast a type that respond to :new with two params' do
       type = Time
-      property = described_class.new('money_property', type, Time.now)
+      property = described_class.new('time_property', type, Time.now)
       result = property.cast([2020, 2])
       expect(result).to eq(Time.new(2020, 2))
     end
