@@ -7,7 +7,7 @@ First, you need to define the information that you want to move in a class inher
 
 
 ```ruby
-class P < DRO
+class Player < DRO
 	property :registered, :bool, default: false
   property :name, :string
   property :number, :integer
