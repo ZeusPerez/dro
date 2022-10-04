@@ -20,13 +20,13 @@ RSpec.describe DRO do
   end
 
   it 'parses the fields when loads the class' do
-    expected_fields = %w(test_string
+    expected_fields = %w[test_string
                          test_number
                          test_number_default
                          test_bool
                          test_bool_default
                          test_money
-                         test_array)
+                         test_array]
     expect(MyDRO.properties.keys).to eq(expected_fields)
     expect(MyDRO.properties.values).to all(be_an(Property))
   end

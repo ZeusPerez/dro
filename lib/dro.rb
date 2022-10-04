@@ -38,8 +38,8 @@ class DRO
     self.attributes = attrs
   end
 
-  def to_json
-    @attributes.to_json
+  def to_json(opts = {})
+    @attributes.to_json(opts)
   end
 
   def to_hash
